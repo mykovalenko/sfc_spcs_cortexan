@@ -1,7 +1,7 @@
 spec:
   containers:
-    - name: dep-&{ depname }
-      image: &{ accname }.registry.snowflakecomputing.com/&{ dbsname }/&{ depname }/images/dep-&{ depname }:latest
+    - name: app-&{ depname }
+      image: &{ accname }.registry.snowflakecomputing.com/&{ dbsname }/&{ depname }/images/app-&{ depname }:latest
       env:
         DEP_DBS: {{ dbsname | default('APPS', true) }}
         DEP_XMA: {{ depname | default('CORTEXAN', true) }}
@@ -10,7 +10,7 @@ spec:
         - name: volume-stage
           mountPath: /opt/spcs/stage/
   endpoints:
-    - name: dep-&{ depname }
+    - name: app-&{ depname }
       port: 8501
       public: true
   volumes:
@@ -19,6 +19,6 @@ spec:
       uid: 1000
       gid: 1000
 serviceRoles:
-  - name: &{ depname }_RAX
+  - name: &{ depname }_AXSROLE
     endpoints:
-    - dep-&{ depname }
+    - app-&{ depname }

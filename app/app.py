@@ -1,13 +1,10 @@
 import os
 import json
-import pandas as pd
 import streamlit as st
 import snowflake.connector
-from snowflake.snowpark import Session, FileOperation
-from snowflake.snowpark import functions as f
-from typing import Any, Dict, List, Optional
+from snowflake.snowpark import Session
+from typing import Dict, List, Optional
 import helpers
-import requests
 
 DEP_DBS = os.getenv('DEP_DBS')
 DEP_XMA = os.getenv('DEP_XMA')
