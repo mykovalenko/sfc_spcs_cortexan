@@ -1,4 +1,4 @@
-FROM ollama/ollama
+FROM python:3.11-slim
 
 WORKDIR /opt/spcs
 COPY ./main.sh /opt/spcs/
